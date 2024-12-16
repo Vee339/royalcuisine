@@ -1,0 +1,662 @@
+@import url("https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Quicksand:wght@300..700&display=swap");
+
+:root {
+  --main-color: #d39d55;
+  --secondary-color: #8d0b41;
+  --tertiary-color: #d6cfb4;
+  --accent-color: #fff8e6;
+  --black-shade: #131010;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+::selection {
+  background: var(--secondary-color);
+}
+
+body {
+  background: var(--accent-color);
+  position: relative;
+}
+#initial-section {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--tertiary-color);
+  opacity: 0;
+  display: block;
+  animation: moveUpwards 2s ease 0s none;
+  z-index: 100;
+}
+main {
+  width: 100%;
+  /* height: 100vh; */
+  position: relative;
+  background: var(--main-color);
+  padding: 5px 70px 70px;
+  z-index: 95;
+  /* transform: translateY(100vh);
+  animation: moveUpwards 1.5s ease-in-out forwards 0.01s; */
+}
+header {
+  display: flex;
+  gap: 45px;
+  align-items: flex-start;
+}
+header h2 {
+  width: 200px;
+  height: 200px;
+  filter: blur(30px);
+  transform: scale(1.5);
+  opacity: 0;
+  animation: animateLogo 2.5s forwards 4s;
+}
+header h2 a {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+header h2 a img {
+  width: 100%;
+  height: 100%;
+}
+#menu {
+  z-index: 50;
+  list-style-type: none;
+  display: flex;
+  opacity: 0;
+  filter: blur(15px);
+  transform: translateY(0);
+  font-family: "Quicksand", serif;
+  animation: animateMenu 2s ease-in-out forwards 2s;
+}
+
+#menu li {
+  transform: rotate(0deg);
+  transition: all 0.2s ease-out;
+  padding: 25px 15px;
+}
+#menu a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  transition: all 0.2s;
+  position: relative;
+}
+#menu a:hover {
+  color: var(--secondary-color);
+}
+#menu li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-color);
+  transition: all 0.3s ease-out;
+}
+#menu li a:hover::before {
+  width: 100%;
+  background: var(--secondary-color);
+}
+#menu li:hover {
+  transform: translateY(-3px);
+}
+#landing-content {
+  width: 100%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+main h1 {
+  position: absolute;
+  top: 40%;
+  left: -300px;
+  width: 400px;
+  font-size: 4rem;
+  font-family: "Bonheur Royale", cursive;
+  z-index: 100;
+  color: var(--tertiary-color);
+  text-shadow: -50px 3px 10px rgba(0, 0, 0, 0.643);
+  animation: moveRight 2.5s ease-out forwards 0.2s;
+}
+#image-container {
+  position: absolute;
+  right: -400px;
+  top: 50px;
+  width: 370px;
+  height: 550px;
+  z-index: -50;
+  box-shadow: -70px -70px 25px rgba(0, 0, 0, 0.643);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  animation: moveLeft 1.5s ease-out forwards 1s,
+    boxShadow 1.5s ease-out forwards 1s;
+}
+#image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.call-to-action {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+.call-to-action button {
+  font-family: "Quicksand", serif;
+  font-size: 1.5rem;
+  padding: 10px 40px;
+  width: 225px;
+  height: 53px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  opacity: 0;
+  filter: blur(30px);
+  transform: scale(1.5);
+  animation: animateLogo 2.5s forwards 3s;
+  position: relative;
+  transition: all 0.8s;
+  position: relative;
+}
+
+.call-to-action .booking {
+  color: var(--tertiary-color);
+  outline: 0 solid transparent;
+  outline-offset: -30px;
+}
+.call-to-action .booking:hover {
+  color: var(--secondary-color);
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 0;
+}
+.call-to-action .booking::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary-color);
+  z-index: -100;
+  transition: all 0.8s;
+}
+.call-to-action .booking:hover::before {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.call-to-action .whyUs {
+  color: var(--black-shade);
+  outline: 2px solid var(--black-shade);
+  outline-offset: 0;
+}
+.call-to-action .whyUs:hover {
+  color: var(--accent-color);
+  outline: 0 solid transparent;
+  outline-offset: -30px;
+}
+.call-to-action .whyUs::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  width: 0;
+  height: 0;
+  background: var(--black-shade);
+  z-index: -100;
+  transition: all 0.8s;
+}
+.call-to-action .whyUs:hover::before {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+}
+#image-gallery {
+  width: 550px;
+  height: 400px;
+  position: relative;
+}
+#image-gallery .imgBox {
+  width: 160px;
+  height: 180px;
+  opacity: 0;
+  position: absolute;
+  animation: galleryAnimations 1.7s ease-out forwards 3s;
+}
+#image-gallery .imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#image-gallery .imgBox:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+#image-gallery .imgBox:nth-child(2) {
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+}
+#image-gallery .imgBox:nth-child(3) {
+  bottom: 0;
+  left: 0;
+}
+#image-gallery .imgBox:nth-child(4) {
+  top: -30px;
+  left: 40%;
+}
+#image-gallery .imgBox:nth-child(5) {
+  bottom: -8px;
+  left: 45%;
+}
+#image-gallery .imgBox:nth-child(6) {
+  right: 0;
+  bottom: 20%;
+}
+
+/* Styling the third page - Why choose us*/
+#about-us {
+  padding: 40px 70px;
+  background: url("../images/image6.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+#about-us h1 {
+  font-size: 4rem;
+  font-family: "Bonheur Royale", cursive;
+  margin-top: 50px;
+  /* color: var(--accent-color); */
+}
+#about-us p.about-paragraph {
+  font-size: 1.25rem;
+  font-family: "Quicksand", serif;
+  line-height: 1.75rem;
+}
+.testimonials {
+  margin: 70px 0 20px;
+}
+.testimonials h2 {
+  margin-bottom: 40px;
+  font-family: "Bonheur Royale", cursive;
+  font-size: 3rem;
+  text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8),
+    -3px -3px 8px rgba(255, 255, 255, 0.8);
+}
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.cards .card {
+  height: 350px;
+  width: 250px;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  perspective: 1000px;
+}
+.card .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cards .card .card-inner .front {
+  border: 2px solid var(--main-color);
+  outline: 2px solid var(--main-color);
+  outline-offset: 5px;
+  z-index: 2;
+}
+.cards .card .card-inner .front .imgBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.cards .card .card-inner .front .imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cards .card .card-inner .front .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgb(211, 157, 85);
+  background: linear-gradient(
+    0deg,
+    rgba(211, 157, 85, 1) 50%,
+    rgba(89, 0, 140, 0) 100%
+  );
+  width: 100%;
+  height: 35%;
+  font-family: "Quicksand", serif;
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.cards .card .card-inner .back {
+  background: var(--secondary-color);
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+.cards .card .card-inner .back p {
+  font-family: "Quicksand", serif;
+  font-size: 1rem;
+  color: var(--accent-color);
+  text-align: start;
+  padding: 20px;
+}
+/* The styling of the form page goes here*/
+#book-appointment {
+  padding: 30px 180px;
+  background: var(--secondary-color);
+  color: var(--tertiary-color);
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+}
+#book-appointment h1 {
+  font-size: 4rem;
+  font-family: "Bonheur Royale", cursive;
+}
+#book-appointment p {
+  font-family: "Quicksand", serif;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 35px 0;
+  width: 550px;
+}
+form .inputBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+form .inputBox label {
+  font-size: 1.3rem;
+  font-family: "Quicksand", serif;
+}
+form .inputBox input {
+  height: 35px;
+  font-size: 1.3rem;
+  background: transparent;
+  border: 2px solid var(--tertiary-color);
+  outline: none;
+  color: var(--tertiary-color);
+  padding-left: 7px;
+}
+form .inputBox input:focus :has(+ label) {
+  bottom: 25px;
+}
+form .inputBox textarea {
+  font-size: 1.3rem;
+  resize: vertical;
+  background: transparent;
+  border: 1px solid var(--tertiary-color);
+  outline: none;
+  padding: 10px;
+}
+form .inputBox.submit {
+  position: relative;
+}
+form .inputBox input#submit {
+  font-family: "Quicksand", serif;
+  font-size: 1.5rem;
+  padding: 10px 40px;
+  height: 53px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  color: var(--secondary-color);
+  background: var(--accent-color);
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+form .inputBox input#submit:hover {
+  transform: scale(1.1);
+}
+
+#ball {
+  background: var(--accent-color);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5%;
+  right: 20%;
+  display: none;
+}
+#ball.active {
+  display: block;
+  animation: ballAnimation 2s linear forwards;
+}
+#thankyou-msg {
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  transform: translateY(40px);
+  opacity: 0;
+  display: none;
+  transition: 0.5s all;
+  animation: animateMsg 0.8s ease-out forwards;
+}
+#thankyou-msg h2,
+#thankyou-msg p {
+  font-family: "Bonheur Royale", cursive;
+  color: var(--main-color);
+}
+#thankyou-msg h2 {
+  font-size: 3rem;
+}
+#thankyou-msg p {
+  font-size: 2rem;
+}
+@media screen and (max-width: 1200px) {
+  #image-container {
+    top: 70px;
+    width: 300px;
+    height: 500px;
+  }
+  #image-gallery {
+    width: 500px;
+    height: 380px;
+  }
+  #image-gallery .imgBox {
+    width: 100px;
+    height: 130px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  #image-container {
+    top: 100px;
+  }
+}
+
+/* All the keyframe animations are below this comment */
+
+@keyframes moveUpwards {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+}
+@keyframes moveRight {
+  0% {
+    left: -300px;
+  }
+  100% {
+    left: 55%;
+  }
+}
+@keyframes moveLeft {
+  0% {
+    right: -400px;
+  }
+  100% {
+    right: 80px;
+  }
+}
+@keyframes boxShadow {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: -70px -70px 25px rgba(0, 0, 0, 0.643);
+  }
+}
+@keyframes animateMenu {
+  0% {
+    opacity: 0;
+    filter: blur(15px);
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+@keyframes animateLogo {
+  0% {
+    opacity: 0;
+    filter: blur(30px);
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+@keyframes galleryAnimations {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 160px;
+    height: 180px;
+    opacity: 1;
+  }
+}
+@keyframes ballAnimation {
+  0% {
+    bottom: 5%;
+    right: 20%;
+    background: var(--accent-color);
+    width: 100px;
+    height: 100px;
+  }
+  10% {
+    bottom: 10%;
+    right: 12%;
+  }
+  20% {
+    bottom: 40%;
+    right: 30%;
+  }
+  30% {
+    bottom: 30%;
+    right: 5%;
+    width: 10px;
+    height: 10px;
+  }
+  40% {
+    bottom: 20%;
+    right: 35%;
+  }
+  50% {
+    bottom: 10%;
+    right: 55%;
+    background: var(--main-color);
+    width: 100px;
+    height: 100px;
+  }
+  60% {
+    bottom: 25%;
+    right: 65%;
+  }
+  70% {
+    bottom: 30%;
+    right: 70%;
+    width: 10px;
+    height: 10px;
+  }
+  80% {
+    bottom: 35%;
+    right: 80%;
+    width: 100px;
+    height: 100px;
+  }
+  90% {
+    bottom: 40%;
+    right: 85%;
+  }
+  100% {
+    bottom: 50%;
+    right: 50%;
+    background: var(--main-color);
+    width: 10px;
+    height: 10px;
+  }
+}
+@keyframes animateMsg {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
